@@ -2,9 +2,9 @@ streamlit==1.32.0
 pymongo
 bcrypt
 sentence-transformers
+torch
 faiss-cpu
 groq
-faster-whisper
 pypdf
 numpy
 mongomock

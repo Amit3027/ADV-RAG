@@ -1,5 +1,4 @@
 import streamlit as st
-from faster_whisper import WhisperModel
 from pypdf import PdfReader
 from sentence_transformers import SentenceTransformer
 import re
