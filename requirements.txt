@@ -1,11 +1,8 @@
-streamlit==1.32.0
-pymongo
+streamlit
+pymongo[srv]
 bcrypt
 sentence-transformers
-torch
 faiss-cpu
 groq
 pypdf
-numpy
-mongomock
 google-genai
