@@ -24,7 +24,7 @@ def init_db():
             import mongomock
             client = mongomock.MongoClient()
         else:
-            client = MongoClient(uri)
+            client = MongoClient(uri, serverSelectionTimeoutMS=15000)
         return client.rag_tutor_db
     return None
 
@@ -110,7 +110,7 @@ def main():
     if "logged_in" not in st.session_state:
         st.session_state["logged_in"] = False
 
-    if not db:
+    if db is None:
         st.error("Database not configured. Please check `.streamlit/secrets.toml` (copy from secrets.toml.example).")
         st.stop()
 

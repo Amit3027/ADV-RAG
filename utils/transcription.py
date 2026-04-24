@@ -8,12 +8,8 @@ import tempfile
 
 @st.cache_resource
 def load_embedder():
-    # Cache embedder mock
-    class MockEmbedder:
-        def encode(self, text):
-            return np.zeros(1024, dtype='float32')
-    import numpy as np
-    return MockEmbedder()
+    # Cache the real sentence-transformer model for embeddings
+    return SentenceTransformer('all-MiniLM-L6-v2')
 
 @st.cache_resource
 def load_whisper():
