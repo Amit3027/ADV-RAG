@@ -132,8 +132,10 @@ def query(db, user_id):
         with st.chat_message(msg["role"]):
             if msg.get("type") == "diagram":
                 st.markdown(msg["content"])
-                st.markdown("**📊 Mermaid Diagram:**")
-                st.code(msg["mermaid_code"], language="mermaid")
+                # Render as actual image
+                media_gen.render_mermaid_image(msg["mermaid_code"])
+                with st.expander("View Mermaid Code"):
+                    st.code(msg["mermaid_code"], language="mermaid")
             elif msg.get("type") == "video":
                 st.markdown(msg["content"])
             else:
@@ -172,8 +174,10 @@ def query(db, user_id):
                     
                     response = f"📊 **Diagram generated for:** *{prompt}*"
                     st.markdown(response)
-                    st.markdown("**Mermaid Diagram Code:**")
-                    st.code(mermaid_code, language="mermaid")
+                    # Render as actual image
+                    media_gen.render_mermaid_image(mermaid_code)
+                    with st.expander("View Mermaid Code"):
+                        st.code(mermaid_code, language="mermaid")
                     
                     # Save to MongoDB
                     media_gen.save_generated_media(
